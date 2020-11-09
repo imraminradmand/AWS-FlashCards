@@ -21,9 +21,6 @@ class FlashCard extends Component {
         }
     }
 
-    componentDidMount () {
-        
-    }
 
     flip = (e)=>{
         let newFlip = this.state.flipClass === "" ? "flip" : ""
@@ -35,7 +32,7 @@ class FlashCard extends Component {
     newCard = () => {
         let path;
         
-        const cardStyle = this.props.cardStyle 
+        const cardStyle = this.props.cardStyle  //determined at app level
         if ((cardStyle === 'Random') || (cardStyle === 'Regular')){
             path = this.apiHostRoot+'/all'
         }else if(cardStyle === 'Weighted'){
