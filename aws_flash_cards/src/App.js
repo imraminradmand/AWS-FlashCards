@@ -28,8 +28,8 @@ class App extends Component   {
   render() {
     console.log(this.state.cardStyle)
     return (
-      <div className="App">
-        <div>
+      <div className="App align-items-center d-flex">
+        <div className="container">
         <QuizBar userChoice={this.userChoice}/>
         <FlashCard cardStyle={this.state.cardStyle} nowReady={this.nowReady} ready={this.state.ready}/>
         </div>

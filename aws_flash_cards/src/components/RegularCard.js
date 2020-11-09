@@ -3,7 +3,7 @@ import React from 'react'
 function RegularCard(props) {
 
     const question = props.questionData
-
+    console.log(question)
     return(
         <div>
         <div className='card-back'>

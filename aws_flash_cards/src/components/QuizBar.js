@@ -19,7 +19,7 @@ function QuizBar (props) {
         },
         {
             icon:'font', 
-            type:'mutli'
+            type:'Mutli'
 
         }   
     

@@ -3,6 +3,7 @@ import React from 'react'
 function RandomWeighted (props) {
 
     const question = props.questionData
+    console.log(question)
 
     return (
         <div>

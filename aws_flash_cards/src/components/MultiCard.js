@@ -2,12 +2,16 @@ import React from 'react'
 
 function MultiCard(props) {
 
-    const question = props.questionData
+    
+    const question = props.questionData;
+    console.log(question);
     const choices = ['a', 'b', 'c', 'd']
     const options= question.options.map((option, i) => {
-        return (<li key={i}>{choices[i]}.{options}</li>)
+        return (<li key={i}>{choices[i]}.{option}</li>)
     })
 
+    const answerIndx = question.options.indexOf(question.answer)
+    const answerLetter = choices[answerIndx]
 
     return(
         <div>
@@ -19,7 +23,7 @@ function MultiCard(props) {
                 </div>
             </div>
             <div className='card-front'>
-                multi choice answer
+               {answerLetter}. {question.answer}
             </div>
         </div>
     )

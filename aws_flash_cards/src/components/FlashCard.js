@@ -31,8 +31,9 @@ class FlashCard extends Component {
 
     newCard = () => {
         let path;
-        
+       // console.log(this.props.cardStyle) //checking to see if props are being passed down correctly
         const cardStyle = this.props.cardStyle  //determined at app level
+
         if ((cardStyle === 'Random') || (cardStyle === 'Regular')){
             path = this.apiHostRoot+'/all'
         }else if(cardStyle === 'Weighted'){
@@ -42,6 +43,7 @@ class FlashCard extends Component {
         }
 
         axios.get(path).then((response) =>{
+            console.log(response.data) //data is not being passed to MultiCard check to see if reponse is available
             this.setState({
                 questionData: response.data,
             })
