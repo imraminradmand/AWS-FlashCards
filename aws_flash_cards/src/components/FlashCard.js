@@ -3,6 +3,11 @@ import MultiCard from './MultiCard'
 import RegularCard from './RegularCard'
 import RandomWeighted from './RandomWeighted'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner} from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+library.add(faSpinner)
 
 
 class FlashCard extends Component {
@@ -11,12 +16,13 @@ class FlashCard extends Component {
         this.apiHostRoot = `https://aws-services.robertbunch.dev/services`
         this.state = {
             flipClass:'',
-            questionData: ''
+            questionData: '',
+            ready: false
         }
     }
 
     componentDidMount () {
-        this.newCard()
+        
     }
 
     flip = (e)=>{
@@ -40,12 +46,22 @@ class FlashCard extends Component {
 
         axios.get(path).then((response) =>{
             this.setState({
-                questionData: response.data
+                questionData: response.data,
+                ready: true
             })
         })
     }
 
     render() {
+
+        if(!this.state.ready) {
+            this.newCard()
+                return (
+                    <div className='spinner-wrapper'>
+                        <FontAwesomeIcon icon='spinner' size='6x' spin/>
+                    </div>
+            )
+        }
         return(
             <div>
                 <div className="row align-items-center card-holder">
