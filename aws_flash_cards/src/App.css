@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   min-height: 100vh; 
+  background-image: linear-gradient(to bottom, #ccccff 38%, #66ff99 100%) ;
 }
 
 .card-holder{
@@ -102,4 +103,6 @@ ul.multi li{
   padding: 0 5px;
   font-size: 16px;
 }
+
+
 

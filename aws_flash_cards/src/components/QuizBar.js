@@ -32,7 +32,17 @@ function QuizBar (props) {
     })
     return(
         <div className= 'quiz-bar'>
-            <h1>Choose your study type</h1>
+            <h1 style={{
+                fontFamily:'comic sans ms',
+                fontWeight: 'bolder',
+                marginTop: '-2em',
+                marginBottom: '1em'
+            }}>Amazon Cloud Practitioner Flash Cards</h1>
+
+            <h1 style={{
+                marginBottom: '1em',
+                fontFamily: 'comic sans ms'
+            }}>Choose your study type</h1>
             <ul className='nav nav-pills nav-fill'>
                 {quizTypes}
             </ul>
