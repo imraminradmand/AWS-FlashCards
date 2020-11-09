@@ -1,5 +1,6 @@
 # AWS-FlashCards
-Mini Project. Grabs data from API and shows allows student to test their knowledge on AWS Cloud Practitioning
+Mini project built for students trying to receive their AWS Cloud Practitioner Certification to help them study.
+As I, myself am working towards this certification I thought it would be a great opportunity to create a simple flashcard app rather than going through multiple different website trying to prepare for my exam.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
