@@ -17,7 +17,7 @@ class FlashCard extends Component {
         this.state = {
             flipClass:'',
             questionData: '',
-            ready: false
+            
         }
     }
 
@@ -36,25 +36,25 @@ class FlashCard extends Component {
         let path;
         
         const cardStyle = this.props.cardStyle 
-        if ((cardStyle === 'Random') || (cardStyle === 'Regular')) {
-            path = this.apiHostRoot + '/all'
-        } else if (cardStyle === 'Weighted') {
-            path = this.apiHostRoot + '/weighted'
-        } else {
-            path = this.apiHostRoot + '/multi'
+        if ((cardStyle === 'Random') || (cardStyle === 'Regular')){
+            path = this.apiHostRoot+'/all'
+        }else if(cardStyle === 'Weighted'){
+            path = this.apiHostRoot+'/weighted'
+        }else{
+            path = this.apiHostRoot+'/multi'
         }
 
         axios.get(path).then((response) =>{
             this.setState({
                 questionData: response.data,
-                ready: true
             })
+            this.props.nowReady(); //updates parent state
         })
     }
 
     render() {
 
-        if(!this.state.ready) {
+        if(!this.props.ready) {
             this.newCard()
                 return (
                     <div className='spinner-wrapper'>
@@ -62,11 +62,23 @@ class FlashCard extends Component {
                     </div>
             )
         }
+
+        const cardStyle = this.props.cardStyle 
+        let card
+        
+        if (cardStyle === 'Mutli') {
+            card = <MultiCard questionData={this.state.questionData}/>
+        } else if (cardStyle === 'Regular') {
+            card = <RegularCard questionData={this.state.questionData}/>
+        } else {
+            card = <RandomWeighted questionData={this.state.questionData}/>
+        }
+
         return(
             <div>
                 <div className="row align-items-center card-holder">
                     <div onClick={this.flip} className={`col-sm-6 offset-sm-3 card mb-3 ${this.state.flipClass}`}>
-                        <RegularCard questionData={this.state.questionData}/>
+                        {card}
                     </div>
                 </div>
                 <button onClick={this.newCard} className='btn btn-primary btn-lg'>Next Question!</button>
